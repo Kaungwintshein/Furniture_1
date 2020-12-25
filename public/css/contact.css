@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
+
+*{
+    font-family: 'Jost';
+}
+h2{
+    font-size: 2.83333rem;
+    line-height: 1.17647;
+    font-weight: 400;
+    color: #181818;
+    margin-bottom: 0.66667rem;
+}
+h3{
+    font-size: 2rem;
+    line-height: 1.2rem;
+    font-weight: 400;
+    color: #181818;
+}
+/* h4{
+    text-transform: capitalize;
+    font-size: 1.41667rem;
+    line-height: 1.64706;
+    font-weight: 400;
+    color: #181818;
+    margin-bottom: 2.66667rem;
+} */
+.heading-container{
+    position: relative;
+    height: 310px;
+}
+.heading-img-container{
+    background-color: #ecf1f4;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.heading-bg-img{
+    width: 100%;
+    height: 100%;
+    background-image: url(/images/contant-page-heading-bg.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.heading-text{
+    position: absolute;
+    top: auto;
+    right: 0;
+    bottom: auto;
+    left: 0;
+    text-align: left;
+    align-self: center;
+}
+.heading-title-text{
+    font-family: 'Jost',sans-serif;
+    font-weight: 400;
+    color: #181818;
+    margin-bottom: 2.66667rem;
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: 1.33333rem;
+}
+
+.contact-city{
+    font-size: 1rem;
+    color: #181818;
+    font-weight: 1000;
+    line-height: 1;
+}
+.contact-address{
+    font-weight: 200;
+    line-height: 1.75;
+    color: #686868;
+}
+
+
+.border-bottom-me{
+    border-bottom: 1px solid #e5e5e5;
+}
+.input{
+    width: 100%;
+    border: none;
+}
+.textarea{
+    width: 100%;
+}
+.btn-submit-me{
+    font-size: 0.8rem;
+    width: auto;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.3rem;
+}
+.btn-discover-me{
+    font-size: 0.8rem;
+    width: auto;
+    font-weight: 600;
+    cursor: pointer;
+}

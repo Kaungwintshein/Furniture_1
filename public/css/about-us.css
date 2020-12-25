@@ -1,0 +1,309 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Jost", "Poppins", sans-serif;
+}
+body,
+html {
+  font-size: 20px;
+}
+.Rower {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+section {
+  padding: 60px 0px;
+}
+/* =====================Title======================================
+ ========================================================================== */
+.title {
+  background-image: url(../../images/about-us-page-title-bg.jpg);
+  max-width: 100%;
+  background-size: cover;
+}
+.text {
+  font-size: 2em;
+  margin-left: 80px;
+}
+
+/* =====================choose Place======================================
+ ========================================================================== */
+.choose_place {
+  display: grid;
+  grid-template-columns: 50% 25% 25%;
+  grid-gap: 10px;
+}
+.choose_place p {
+  font-size: 0.8em;
+}
+/* =====================Project Gallery===================================
+ ==================================================================== */
+.project_gallery {
+  text-align: center;
+}
+.gallery_img {
+  width: 80%;
+  height: 500px;
+}
+/* =====================Rating-Section===================================
+ ==================================================================== */
+.rating_section {
+  display: grid;
+  grid-template-columns: 50% 40%;
+}
+.room_rating {
+  width: 500px;
+}
+.room_rating li {
+  list-style-type: none;
+  margin: 20px 0;
+}
+.room_rating li h3 {
+  font-size: 1em;
+  position: relative;
+}
+.room_rating li h3 > i {
+  position: absolute;
+  right: 0;
+}
+button {
+  color: #fff;
+  background-color: #000;
+  border-radius: 5px;
+  padding: 10px 20px;
+}
+.bar {
+  display: block;
+  background-color: rgba(225, 225, 225, 1);
+  height: 4px;
+  border: 1px solid rgba(225, 225, 225, 1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.bar span {
+  height: 7px;
+  float: left;
+  background: #000;
+}
+.funiture {
+  width: 68%;
+  animation: funiture 2s;
+}
+.crafts {
+  width: 91%;
+  animation: crafts 2s;
+}
+.handmade {
+  width: 82%;
+  animation: handmade 2s;
+}
+.organicfood {
+  width: 55%;
+  animation: organicfood 2s;
+}
+@keyframes funiture {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 68%;
+  }
+}
+@keyframes crafts {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 91%;
+  }
+}
+@keyframes handmade {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 82%;
+  }
+}
+@keyframes organicfood {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 55%;
+  }
+}
+
+.find_favor p {
+  font-size: 0.8em;
+}
+
+/* =====================Advertisement===================================
+ ==================================================================== */
+.advertisement {
+  text-align: center;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 10px;
+}
+.advertise img {
+  width: 350px;
+  height: 200px;
+}
+.advertise_text {
+  padding-top: 15px;
+  font-size: 0.8em;
+}
+.advertise_text h3 {
+  font-size: 1.5em;
+}
+/* =====================Slider Continer===================================
+ ==================================================================== */
+.slider_container {
+  background-image: url(../../images/about_us_bg_img.jpg);
+  background-size: cover;
+
+  text-align: center;
+  height: 500px;
+}
+.head_title {
+  font-size: 0.8em;
+  margin-top: 20px;
+}
+
+.Container {
+  width: 60%;
+  margin: 20px auto;
+
+  position: relative;
+}
+.carouel {
+  height: 400px;
+  width: 90%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.slider {
+  display: flex;
+  width: 300%;
+
+  transition: all 0.4s;
+}
+.slider div {
+  font-size: 1em;
+}
+.control .arrow {
+  position: absolute;
+  top: 10%;
+  cursor: pointer;
+}
+.control .left {
+  left: 0px;
+}
+.control .right {
+  right: 0px;
+}
+
+/* =====================Media Quires===================================
+ ==================================================================== */
+@media only screen and (max-width: 1200px) {
+  .choose_place {
+    grid-template-columns: 45% 25% 25%;
+    margin-left: 5%;
+  }
+  .choose_place h3 {
+    font-size: 1.5em;
+  }
+  .choose_place p {
+    font-size: 0.8em;
+  }
+  .rating_section {
+    margin-left: 5%;
+  }
+  .find_favor {
+    margin-left: 10%;
+    grid-gap: 20px;
+  }
+  .advertise img {
+    width: 250px;
+    height: 150px;
+  }
+
+  .advertisement {
+    grid-template-columns: 33% 33% 32%;
+    grid-gap: 5px;
+  }
+}
+@media only screen and (max-width: 1023px) {
+  .choose_place {
+    grid-template-columns: 40% 23% 23%;
+    margin-left: 2%;
+    grid-gap: 20px;
+    font-size: 0.9em;
+  }
+  .gallery_img {
+    width: 90%;
+    height: 400px;
+  }
+  .rating_section {
+    display: grid;
+    grid-template-columns: 50% 40%;
+  }
+  .room_rating {
+    width: 350px;
+  }
+  .find_favor h3 {
+    font-size: 1.2em;
+  }
+}
+@media only screen and (max-width: 767px) {
+  /* .rating_section{
+        display: block;
+    } */
+  .room_rating {
+    width: 250px;
+    margin-left: 10px;
+  }
+  .find_favor {
+    margin: 0;
+    padding-top: 20px;
+    padding-left: 20px;
+  }
+  button {
+    padding: 6px 10px;
+  }
+  .advertisement {
+    display: block;
+  }
+  .advertise_text {
+    margin: 20px;
+  }
+  .advertis_text h3 {
+    font-size: 1.2em;
+  }
+  .slider div {
+    font-size: 0.7em;
+  }
+}
+@media only screen and (max-width: 575px) {
+  .rating_section {
+    display: block;
+  }
+  .room_rating {
+    width: 300px;
+    margin-left: 25px;
+  }
+  .find_favor {
+    margin-left: 25px;
+  }
+}
+@media only screen and (max-width: 368px) {
+  .room_rating {
+    width: 230px;
+    margin-left: 15px;
+  }
+  .slider div {
+    font-size: 0.6em;
+  }
+}

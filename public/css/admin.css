@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none !important;
+}
+
+.nav {
+  border-bottom: 1px solid #000000;
+}
+
+.nav li {
+  margin: 0 2rem;
+}
+.nav li a {
+  font-weight: bolder;
+}
+.img {
+  width: 150px;
+  height: 100px;
+}
+.title {
+  font-weight: bold;
+}
+
+.button {
+  border-radius: 0 !important;
+}
