@@ -35,35 +35,29 @@
         <div class="cart-items">
 
             <?php foreach($preorders as $preorder): ?>
-                
-            <div class="cart-row">
+            <form action="/checkout.php?id=<?php echo $preorder['order_product_id'] ?>&customerid=<?php echo $preorder['customer_id']; ?>" method="post">
+                <div class="cart-row">
 
-                <div class="cart-item cart-column">
-                    <img class="cart-item-image" src="./images/product/<?php echo $preorder['img'] ?>" width="100" height="100">
-                    <span class="cart-item-title"><?php echo $preorder['item_name'] ?></span>
-                </div>
-                <div class="cart-price cart-column">$ <?php echo $preorder['price'] ?></div>
-                <div class="cart-quantity cart-column">
-                    <!-- <form action='<?php //echo $_SERVER['PHP_SELF'] ?>' method='POST'> -->
-                    <input class="cart-quantity-input" name='quantity' type="number" value="<?php echo $preorder['order_quantity'] ?>">
-                    <!-- <input type="hidden" name="id_to_delete" value="<?php //echo $preorder['id'] ?>" />
-                    <button type='submit' name='delete' class="btn btn-danger" type="button">REMOVE</button> -->
-                    <!-- </form> -->
-                   
-                </div>
+                    <div class="cart-item cart-column">
+                        <img class="cart-item-image" src="./images/product/<?php echo $preorder['img'] ?>" width="100" height="100">
+                        <span class="cart-item-title"><?php echo $preorder['item_name'] ?></span>
+                    </div>
+                    <div class="cart-price cart-column">$ <?php echo $preorder['price'] ?></div>
+                    <div class="cart-quantity cart-column">
+                        <input class="cart-quantity-input" name='order_quantity' type="number" value="<?php echo $preorder['order_quantity'] ?>">
+                    </div>
 
-                <div class="cart-column">
-                <form action="/checkout.php?id=<?php echo $preorder['order_product_id'] ?>&customerid=<?php echo $preorder['customer_id']; ?>" method="post">
-                    <input type="hidden" name="product_id" value="<?php echo $preorder['product_id']; ?>">
-                    <input type="hidden" name="price" value="<?php echo $preorder['price']; ?>">
-                    <input type="hidden" name="order_quantity" value="<?php echo $preorder['order_quantity']; ?>">
-                    <input type="hidden" name="img" value="<?php echo $preorder['img']; ?>">
-                    <button type='submit' name='checkout' class="btn" type="button">Order</button>
+                    <div class="cart-column">
+                        <input type="hidden" name="product_id" value="<?php echo $preorder['product_id']; ?>">
+                        <input type="hidden" name="price" value="<?php echo $preorder['price']; ?>">
+                        <input type="hidden" name="img" value="<?php echo $preorder['img']; ?>">
+                        <button type='submit' name='checkout' class="btn" type="button">Order</button>
+                    </div>
+                    <div class="cart-column">
+                        <button type='submit' name='delete' id="btn-danger" class="btn btn-danger" type="button"> <a href="/cartDel.php?id=<?php echo $preorder['order_product_id'] ?>">REMOVE</a></button>
+                    </div>
                 </div>
-                <div class="cart-column">
-                    <button type='submit' name='delete' id="btn-danger" class="btn btn-danger" type="button"> <a href="/cartDel.php?id=<?php echo $preorder['order_product_id'] ?>">REMOVE</a></button>
-                </div>
-            </div>
+            </form>
             <?php endforeach; ?>
 
         </div>  
