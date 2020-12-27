@@ -7,13 +7,9 @@
         echo $_SESSION['delete'];
         unset($_SESSION['delete']);
     }
-?>
-<?php 
-//$id = $_SESSION['userid'];
-//$result = mysqli_query($conn, "SELECT product.*,auth.*,orders.* FROM orders INNER JOIN auth ON orders.customer_id=auth.id INNER JOIN product ON orders.product_id=product.id");
-// $result = mysqli_query($conn,"SELECT * FROM orders INNER JOIN auth ON orders.customer_id=auth.id INNER JOIN orders.product_id=product.id");
+
+
 $result = mysqli_query($conn,"SELECT auth.id,product.item_name,product.item_name, product.*, auth.*, orders.* FROM orders LEFT JOIN auth ON orders.customer_id=auth.id LEFT JOIN product ON orders.product_id=product.id");
-//"SELECT auth.id,product.category_id,product.item_name FROM orders LEFT JOIN auth ON orders.customer_id=auth.id LEFT JOIN product ON orders.product_id=product.id;";
 $count = mysqli_num_rows($result);
 $sn = 1;
 $orders = mysqli_fetch_all($result, MYSQLI_ASSOC);

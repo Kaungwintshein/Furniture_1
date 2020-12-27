@@ -176,22 +176,28 @@ class CreateDb
 
 
         // TBALE6
-        if(mysqli_query($this->con, $sql)){
+        // if(mysqli_query($this->con, $sql)){
 
-            $this->con = mysqli_connect($servername, $username, $password, $dbname);
+        //     $this->con = mysqli_connect($servername, $username, $password, $dbname);
 
-            // sql to create new table
-            $password = md5('12345');
-            $sql = "INSERT INTO auth (role,username,password,email,phone,address,created_date)
-                     VALUES('user','kaung','$password','k0@gmail.com','098877839','Eaim',now())";
+        //     // sql to create new table
+        //     $password = md5('12345');
+        //     $sql = "INSERT INTO auth (role,username,password,email,phone,address,created_date)
+        //              VALUES('user','kaung','$password','k0@gmail.com','098877839','Eaim',now())";
             
-            if (!mysqli_query($this->con, $sql)){
-                echo "Error insert data: " . mysqli_error($this->con);
-            }
+        //     if (!mysqli_query($this->con, $sql)){
+        //         echo "Error insert data: " . mysqli_error($this->con);
+        //     }
 
-        }else{
-            return false;
-        }
+        // }else{
+        //     return false;
+        // }
+
+        // INSERT INTO auth (role,username,password,email,phone,address,created_date)
+        // VALUES('user','kaung','827ccb0eea8a706c4c34a16891f84e7b','k0@gmail.com','098877839','Eaim',now())
+
+        // INSERT INTO auth (role,username,password,email,phone,address,created_date)
+        // VALUES('admin','admin','$password','k0@gmail.com','098877839','Eaim',now())
     }
 
 }

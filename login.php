@@ -1,9 +1,10 @@
 <?php
 session_start();
-include('php/config/db.connect.php');
-
 include "php/config/create-db.php";
 $db = new CreateDb("reeco1","product","category","orders","auth","order_product","localhost","root","123456"); 
+
+include('php/config/db.connect.php');
+
 
 if(isset($_POST['btnsignin'])){
     $username = $_POST['username'];
