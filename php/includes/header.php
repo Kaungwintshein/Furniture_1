@@ -22,7 +22,7 @@
             <a href="/about-us.php" class="text-dark text-capitalize link">About</a>
         </li>
         <li>
-            <a href="#" class="text-dark text-capitalize link">Journal</a>
+        <a href="/shop.php" class="text-dark text-capitalize link ">Shop</a>
         </li>
         <li class='logo-link-desktop'>
             <a href="#" class="text-dark text-uppercase">
@@ -30,10 +30,7 @@
             </a>
         </li>
         <li>
-            <a href="/shop.php" class="text-dark text-capitalize link ">Shop</a>
-        </li>
-        <li>
-            <a href="#" class="text-dark text-capitalize link">Projects</a>
+            <a href="/product.php" class="text-dark text-capitalize link ">Products</a>
         </li>
         <li>
             <a href="/contact.php" class="text-dark text-capitalize link">Contact</a>

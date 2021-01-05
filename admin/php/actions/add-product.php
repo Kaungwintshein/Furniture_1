@@ -34,6 +34,13 @@
             <input  type="number" name="price" class="form-control">
         </div>
         <div class="form-group">
+            <label for="Price">
+                Stock
+            </label>
+            
+            <input  type="number" name="stock" class="form-control">
+        </div>
+        <div class="form-group">
             <textarea name="description"  class="form-control"
                             placeholder="Description of the Food."></textarea>
         </div>
@@ -85,6 +92,7 @@
 if(isset($_POST['submit'])){
     $item_name = $_POST['name'];
     $price = $_POST['price'];
+    $stock = $_POST['stock'];
     $detail = $_POST['description'];
     $category_id = $_POST['category'];
     if(isset($_FILES['image']['name'])){
@@ -112,7 +120,7 @@ if(isset($_POST['submit'])){
         
     }
 
-$sql = "INSERT INTO product(item_name,category_id,price,detail,img,created_date) VALUES ('$item_name','$category_id','$price','$detail','$image_name',now())";
+$sql = "INSERT INTO product(item_name,category_id,price,detail,stock,img,created_date) VALUES ('$item_name','$category_id','$price','$detail','$stock','$image_name',now())";
 
     $res = mysqli_query($conn,$sql);
 

@@ -28,6 +28,12 @@
             <a href="/admin/manage-order.php" class="text-danger">Order</a>
         </li>
         <li>
+            <a href="/admin/manage-send-order.php" class="text-danger">Send Info</a>
+        </li>
+        <li>
+            <a href="/admin/manage-feedback.php" class="text-danger">Feedback</a>
+        </li>
+        <li>
             <a href="/php/config/logout.php" class="text-danger">Logout</a>
         </li>
     </ul>

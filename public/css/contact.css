@@ -3,6 +3,11 @@
 *{
     font-family: 'Jost';
 }
+#container-fluid-me{
+    max-width: 1470px;
+    margin: 0;
+    padding: 0;
+}
 h2{
     font-size: 2.83333rem;
     line-height: 1.17647;
@@ -79,7 +84,7 @@ h3{
 
 
 .border-bottom-me{
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #000;/*  #e5e5e5 */
 }
 .input{
     width: 100%;

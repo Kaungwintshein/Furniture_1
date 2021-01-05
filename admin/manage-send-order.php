@@ -3,24 +3,17 @@
     include("./php/includes/header.php");
     include("./php/config/db_connect.php");
 
-    if(isset($_SESSION['delete'])){
-        echo $_SESSION['delete'];
-        unset($_SESSION['delete']);
-    }
-
-
-$result = mysqli_query($conn,"SELECT auth.id,product.item_name,product.item_name, product.*, auth.*, orders.* FROM orders LEFT JOIN auth ON orders.customer_id=auth.id LEFT JOIN product ON orders.product_id=product.id");
-$count = mysqli_num_rows($result);
-$sn = 1;
-$orders = mysqli_fetch_all($result, MYSQLI_ASSOC);
-mysqli_free_result($result);
-mysqli_close($conn);
-
+    $result = mysqli_query($conn,"SELECT * FROM send_order");
+    $count = mysqli_num_rows($result);
+    $sn = 1;
+    $orders = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    mysqli_free_result($result);
+    mysqli_close($conn);
 ?>
 
 <div class="container">
-    <h3 class='title m-4'>Manage Orders</h3>
-    <table class="table  table-striped table-hover">
+    <h3 class='title m-4'>Send Information</h3>
+    <table class="table table-striped table-hover">
         <thead>
             <tr>
                 <th scope="col">S.N.</th>
@@ -30,7 +23,7 @@ mysqli_close($conn);
                 <th scope="col">Quantity</th>
                 <th scope="col">Image</th>
                 <th scope="col">Total</th>
-                <th  scope="col">Actions</th>
+                <th  scope="col">Date</th>
             </tr>
         </thead>
         <tbody>
@@ -40,11 +33,11 @@ mysqli_close($conn);
                 <tr>
                     <th scope="row"> <?php echo $sn++ ?></th>
                     <td>              
-                        <?php echo $row['username'] ?>
+                        <?php echo $row['customer_name'] ?>
                     </td>
                     <td>              
-                        <?php if($row['item_name']){
-                            echo $row['item_name'];
+                        <?php if($row['product_name']){
+                            echo $row['product_name'];
                         }else{
                             echo "error";
                         } 
@@ -75,18 +68,15 @@ mysqli_close($conn);
                     <td>              
                         <?php echo "$ " . $row['quantity'] * $row['price'] ?>
                     </td>
-
-                    <td  colspan="2" >
-                    <a href='/admin/php/actions/delete-order.php?id=<?php echo $row['orders_id']; ?>&product_img=<?php echo $row['img']; ?>' class="btn-danger btn button ">Order Is Send</a>
-
+                    <td>              
+                        <?php echo $row['created_date'] ?>
                     </td>
-                    
                 </tr>
             <?php endforeach; ?>
         <?php else: ?>
                 <tr>
                     <td colspan="8">
-                        <div class="text-danger">No Confirmed YET.</div>
+                        <div class="text-danger">No Information Now.</div>
                     </td>
                 </tr>
         <?php endif; ?>

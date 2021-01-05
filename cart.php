@@ -2,6 +2,7 @@
     include "./php/config/db.connect.php";
     include "./php/config/auth.php";
 
+
     $id = $_SESSION['userid'];
     $sql = "select auth.id as customer_id, auth.username as customer_name,product.item_name as product_name,product.*, order_product.* FROM order_product INNER JOIN auth ON order_product.customer_id=auth.id INNER JOIN product ON order_product.product_id=product.id WHERE auth.id='$id'";
     $res = mysqli_query($conn, $sql);
@@ -15,7 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/public/css/cart.css">
-    <script src="/public/Js/cart.js" type="text/javascript"></script>
+    <!-- <script src="/public/Js/cart.js" type="text/javascript"></script> -->
 </head>
 
 <body>
@@ -33,8 +34,9 @@
             <span class="cart-quantity cart-header cart-column">DELETE</span>
         </div>
         <div class="cart-items">
-
-            <?php foreach($preorders as $preorder): ?>
+            <?php 
+                foreach($preorders as $preorder):
+            ?>
             <form action="/checkout.php?id=<?php echo $preorder['order_product_id'] ?>&customerid=<?php echo $preorder['customer_id']; ?>" method="post">
                 <div class="cart-row">
 
@@ -58,8 +60,7 @@
                     </div>
                 </div>
             </form>
-            <?php endforeach; ?>
-
+        <?php endforeach; ?>
         </div>  
         <div class="cart-total">
             <strong class="cart-total-title">Total</strong>
@@ -69,6 +70,41 @@
         
     </div>
 
+
+<script>
+function updateCartTotal() {
+    let cartRows = document.querySelectorAll(".cart-row");
+    let total = 0;
+    Array.from(cartRows).forEach((cartRow) => {
+      let priceElement = cartRow.querySelector(".cart-price");
+      let quantityElement = cartRow.querySelector(".cart-quantity-input");
+      let price = parseFloat(priceElement.innerHTML.replace("$", ""));
+      let quantity = quantityElement.value;
+      total += price * quantity;
+      cartRow
+        .querySelector(".cart-quantity-input")
+        .addEventListener("change", qualityChange);
+    });
+  
+    total = Math.round(total * 100) / 100;
+    document.querySelector(".cart-total-price").innerHTML = "$ " + total;
+  }
+  function qualityChange(e) {
+    let input = e.target;
+    if (isNaN(input.value) || input.value <= -1) {
+      input.value = 0;
+    }
+    updateCartTotal();
+  }
+  
+  window.addEventListener("change", () => {
+    updateCartTotal();
+  });
+  window.addEventListener("load", () => {
+    updateCartTotal();
+  });
+  console.log("It's Worked!");
+</script>
 
     
 </body>

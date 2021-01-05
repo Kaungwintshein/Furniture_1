@@ -68,6 +68,7 @@ mysqli_close($conn);
                 <th scope="col">Title</th>
                 <th scope="col">Category id</th>
                 <th scope="col">Price</th>
+                <th scope="col">Stock</th>
                 <th scope="col">Image</th>
                 <th  scope="col">Actions</th>
             </tr>
@@ -86,6 +87,9 @@ mysqli_close($conn);
                     </td>
                     <td>              
                     $ <?php echo $product['price'] ?>
+                    </td>
+                    <td>              
+                    <?php echo $product['stock'] ?>
                     </td>
                     <td>
                         <?php 

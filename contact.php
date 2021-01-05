@@ -1,5 +1,6 @@
 <?php 
     include "php/config/auth.php";
+    //echo "<h3>{$_SESSION['contact']}</h3>"
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -73,21 +74,24 @@
             </div>
             <div class="col-md-6">
                 <h1>Ask Us Anything</h1>
-                <div class="container-fluid mt-5">
-                    <div class="border-bottom-me pb-3">
-                        <input class="input" type="text" name="" id="" placeholder="Name*">
+                <form action="insert_contact.php" method="post">
+                    <div class="container-fluid mt-5">
+                        <div class="border-bottom-me pb-3">
+                            <input type="hidden" name="user" value="<?php echo $_SESSION['username'] ?>">
+                            <input class="input" type="text" name="username" id="" placeholder="Name*">
+                        </div>
+                        <div class="border-bottom-me pt-5">
+                            <input class="input" type="text" name="email" id="" placeholder="Email*">
+                        </div>
+                        <div class="border-bottom-me pt-5">
+                            <textarea class="input textarea" name="feedback" id="" placeholder="Your Comment" cols="40" rows="5" aria-invalid="false"></textarea>
+                        </div>
+                        <div class="col-sm-12 submit-btn-me mt-4 mb-5">
+                            <input type="submit" name="submit" class="btn btn-dark p-2 btn-submit-me" value="SUBMIT">
+                        </div>
+                        
                     </div>
-                    <div class="border-bottom-me pt-5">
-                        <input class="input" type="text" name="" id="" placeholder="Email*">
-                    </div>
-                    <div class="border-bottom-me pt-5">
-                        <textarea class="input textarea" name="" id="" placeholder="Your Comment" cols="40" rows="5" aria-invalid="false"></textarea>
-                    </div>
-                    <div class="col-sm-12 submit-btn-me mt-4 mb-5">
-                        <input type="submit" class="btn btn-dark p-2 btn-submit-me" value="SUBMIT">
-                    </div>
-                    
-                </div>
+                </form>
             </div>
         </div>  
     </div>

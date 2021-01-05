@@ -17,8 +17,9 @@ function updateCartTotal() {
   }
   function qualityChange(e) {
     let input = e.target;
-    if (isNaN(input.value) || input.value <= 0) {
-      input.value = 1;
+    if (isNaN(input.value) || input.value <= -1) {
+      input.value = 0;
+      
     }
     updateCartTotal();
   }

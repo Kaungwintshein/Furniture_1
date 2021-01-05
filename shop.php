@@ -18,19 +18,18 @@
 </head>
 
 <body>
-    <!--********************************** Kaung Htet Paing *************************************** -->
     <?php include dirname(__FILE__)."/php/includes/header.php" ; ?>
 
-    <?php 
+<?php 
 
-$sql = "SELECT * FROM category INNER JOIN product ON category.id = product.category_id";
-$res = mysqli_query($conn, $sql);
+    $sql = "SELECT * FROM category INNER JOIN product ON category.id = product.category_id";
+    $res = mysqli_query($conn, $sql);
 
-$count = mysqli_num_rows($res);
-$sn=1;
-$products = mysqli_fetch_all($res,MYSQLI_ASSOC);
+    $count = mysqli_num_rows($res);
+    $sn=1;
+    $products = mysqli_fetch_all($res,MYSQLI_ASSOC);
 
-mysqli_close($conn);
+    mysqli_close($conn);
 
 
 ?>
