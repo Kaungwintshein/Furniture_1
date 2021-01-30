@@ -13,16 +13,16 @@
 
     <ul class="nav d-flex justify-content-center align-items-center  pb-3 pt-4">
         <li>
-            <a href="/admin/" class="text-danger ">Home</a>
-        </li>
-        <li>
-            <a href="/admin/user-list.php" class="text-danger">Users</a>
+            <a href="/admin/index.php" class="text-danger">Users</a>
         </li>
         <li>
             <a href="/admin/manage-category.php" class="text-danger">Category</a>
         </li>
         <li>
             <a href="/admin/manage-product.php" class="text-danger">Product</a>
+        </li>
+        <li>
+            <a href="" class="text-danger "> <h1>REECO</h1></a>
         </li>
         <li>
             <a href="/admin/manage-order.php" class="text-danger">Order</a>

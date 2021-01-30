@@ -9,6 +9,20 @@
   outline: none !important;
 }
 
+/* kws */
+.outOfStock{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.outOfStock::after{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 60%;
+  content: 'Out Of Stock';
+}
+
 .nav-container {
   display: -webkit-box;
   display: -ms-flexbox;

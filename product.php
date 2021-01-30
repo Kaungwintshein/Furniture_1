@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Document</title>
+    <title>REECO - All Products</title>
     <link rel="stylesheet" href="/public/css/style.css">
     <?php include dirname(__FILE__).'/php/includes/head.php'; ?>
     <!-- library -->
@@ -18,6 +18,9 @@
             -webkit-appearance: none;
             appearance: none;
             border: none;
+        }
+        .list-group-item.active{
+            z-index: -1;
         }
     </style>
     

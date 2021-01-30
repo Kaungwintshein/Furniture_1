@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About-us</title>
+    <title>REECO - About Us</title>
   <!-- head css links -->
     <link rel="stylesheet" href="/public/css/style.css">
     <?php include dirname(__FILE__).'/php/includes/head.php'; ?>

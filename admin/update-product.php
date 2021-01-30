@@ -2,6 +2,7 @@
     include("./php/config/auth.php");
     include("./php/includes/header.php");
     include("./php/config/db_connect.php");
+
 ?>
 <?php 
 
@@ -19,7 +20,9 @@ if(isset($_GET['id'])){
         $item_name = $row['item_name'];
         $price = $row['price'];
         $detail = $row['detail'];
+        $stock = $row['stock'];
         $current_image = $row['img'];
+        $category_id = $row['category_id'];
         $category_name = $row['category_name']; 
     }
     else
@@ -65,14 +68,17 @@ if(isset($_GET['id'])){
                 Price
             </label>
             
-            <input value="<?php echo htmlspecialchars($price) ?>"   type="number" name="price" class="form-control">
+            <input value="<?php echo htmlspecialchars($price) ?>"   type="input" name="price" class="form-control">
         </div>
         <div class="form-group">
-            <textarea  name="description"  class="form-control"
-                            placeholder="Description of the Food.">
-                            
-                             <?php echo htmlspecialchars($detail) ?>
-                            </textarea>
+            <label for="stock">
+                Stock
+            </label>
+            <input type="input"  name="stock" class="form-control" value="<?php echo $row['stock'] ?>">
+        </div>
+        <div class="form-group">
+            <textarea  name="description"  class="form-control" placeholder="Description of Product."><?php echo $detail ?> 
+            </textarea><!--htmlspecialchars($detail) -->
         </div>
         <div>
             <label for="image">
@@ -108,7 +114,7 @@ if(isset($_GET['id'])){
                 
                 ?>
                 <?php if($count > 0) :?>
-                    <option value="<?php echo $id; ?>" selected><?php echo $category_name ?></option>
+                    <option value="<?php echo $category_id; ?>" selected><?php echo $category_name ?></option>
                     <?php foreach($products as $product) :?>
                         <option value="<?php echo $product['id'] ?>"> <?php echo $product['category_name'] ?></option>
 
@@ -126,14 +132,13 @@ if(isset($_GET['id'])){
             <label for="image">
                 Image
             </label>
-            <input type="file" name="image" class="form-control">
+            <input type="file" name="image" class="d-block mt-2">
         </div>
 
-        <a href="/admin" class="btn btn-secondary">Cancel</a>
+        <a href="/admin/manage-product.php" class="btn btn-secondary">Cancel</a>
         <input type="hidden" name="current_image" value="<?php echo $current_image; ?>" >
         <input type="hidden" name="id" value="<?php echo $id; ?>">
         <button type="submit" name="submit" value="Submit" class="btn btn-primary">Save</button>
-
     </form>
 </div>
 
@@ -143,10 +148,12 @@ if(isset($_POST['submit'])){
     $item_name = $_POST['name'];
     $price = $_POST['price'];
     $detail = $_POST['description'];
+    $stock = $_POST['stock'];
     $category_id = $_POST['category'];
     $id = $_POST['id'];
     $current_image = $_POST['current_image'];
-    if(isset($_FILES['image']['name'])){
+    
+    if(!empty($_FILES['image']['name'])){
         $category_img = $_FILES['image']['name'];
         $upload = move_uploaded_file($_FILES['image']['tmp_name'],'../images/product/'.$category_img);
         // if($category_img != ''){
@@ -187,21 +194,27 @@ if(isset($_POST['submit'])){
     }else{
         $category_img = $current_image;
     }
-        $sql2 = "UPDATE category INNER JOIN product SET item_name='$item_name',price='$price',detail='$detail',category_id='$category_id',img='$category_img' WHERE product.id='$id'";
+        $sql2 = "UPDATE category INNER JOIN product SET item_name='$item_name',price='$price',detail='$detail',stock='$stock',category_id='$category_id',img='$category_img' WHERE product.id='$id'";
         //$sql2 = "UPDATE product SET item_name='$item_name',price='$price',detail='$detail',category_id='$category_id',img='$category_img' WHERE id='$id'";
           $res2 = mysqli_query($conn, $sql2);
           if($res2==true)
           {
               //Category Updated
+              
               $_SESSION['update'] = "<div class='text-success'>Category Updated Successfully.</div>";
-              header('location:/admin/manage-product.php');
+              echo "<script type='text/javascript'>
+                    window.location = '/admin/manage-product.php';
+                    </script>";
           }
           else
           {
               $error = mysqli_error($conn);
               //failed to update category
               $_SESSION['update'] = "<div class='text-danger'>Failed to Update Category.$error</div>";
-              header('location: /admin/manage-product.php');
+              //header ("location: /admin/manage-product.php");
+              echo "<script type='text/javascript'>
+                    window.location = '/admin/manage-product.php';
+                    </script>";
           }
 }
 

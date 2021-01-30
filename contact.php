@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Contact Us-Furniture store</title>
+    <title>REECO - Contact Us</title>
     <link rel="stylesheet" href="/public/css/style.css">
     <?php include dirname(__FILE__).'/php/includes/head.php'; ?>
     <link rel="stylesheet" href="/public/css/contact.css">
@@ -78,13 +78,13 @@
                     <div class="container-fluid mt-5">
                         <div class="border-bottom-me pb-3">
                             <input type="hidden" name="user" value="<?php echo $_SESSION['username'] ?>">
-                            <input class="input" type="text" name="username" id="" placeholder="Name*">
+                            <input class="input" type="text" name="username" id="" placeholder="Name*" required>
                         </div>
                         <div class="border-bottom-me pt-5">
-                            <input class="input" type="text" name="email" id="" placeholder="Email*">
+                            <input class="input" type="text" name="email" id="" placeholder="Email*" required>
                         </div>
                         <div class="border-bottom-me pt-5">
-                            <textarea class="input textarea" name="feedback" id="" placeholder="Your Comment" cols="40" rows="5" aria-invalid="false"></textarea>
+                            <textarea class="input textarea" name="feedback" id="" placeholder="Your Comment" cols="40" rows="5" aria-invalid="false" required></textarea>
                         </div>
                         <div class="col-sm-12 submit-btn-me mt-4 mb-5">
                             <input type="submit" name="submit" class="btn btn-dark p-2 btn-submit-me" value="SUBMIT">

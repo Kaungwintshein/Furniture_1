@@ -117,7 +117,7 @@ include('../config/db_connect.php');
                     if(!$go_query){
                         die("query failed".mysqli_error($conn));
                     }
-                    header('location: /admin/user-list.php');
+                    header('location: /admin/index.php');
                 }
             }
         }

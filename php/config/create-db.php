@@ -13,6 +13,8 @@ class CreateDb
         public $orders;
         public $auth;
         public $order_product;
+        public $feedback;
+        public $send_order;
         public $con;
 
 
@@ -25,6 +27,8 @@ class CreateDb
         $orders = "Productdb",
         $auth = "ProductDb",
         $order_product = "Productdb",
+        $feedback = "Productdb",
+        $send_order = "Productdb",
         
         $servername = "localhost",
         $username = "root",
@@ -67,12 +71,13 @@ class CreateDb
                              category_id INT NOT NULL,
                              price 	VARCHAR (255) NOT NULL,
                              detail VARCHAR (255) NOT NULL,
+                             stock VARCHAR (255) NULL,
                              img VARCHAR (255) NOT NULL,
                              created_date DATETIME NOT NULL
                             );";
 
             if (!mysqli_query($this->con, $sql)){
-                echo "Error creating table : " . mysqli_error($this->con);
+                echo "Error creating table at table 1 : " . mysqli_error($this->con);
             }
 
         }else{
@@ -92,7 +97,7 @@ class CreateDb
                             );";
 
             if (!mysqli_query($this->con, $sql)){
-                echo "Error creating table : " . mysqli_error($this->con);
+                echo "Error creating table at table 2 : " . mysqli_error($this->con);
             }
 
         }else{
@@ -108,15 +113,18 @@ class CreateDb
             $sql = " CREATE TABLE IF NOT EXISTS $orders
                             (orders_id INT NOT NULL AUTO_INCREMENT,
                             customer_id INT NOT NULL,
+                            buyer_name VARCHAR(255),
                             product_id INT NOT NULL,
                             price VARCHAR(255) NOT NULL,
                             quantity VARCHAR(255) NOT NULL,
+                            phonenumber VARCHAR(255),
+                            address TEXT,
                             created_date DATETIME NOT NULL,
                             PRIMARY KEY (orders_id,customer_id,product_id)
                             );";
 
             if (!mysqli_query($this->con, $sql)){
-                echo "Error creating table : " . mysqli_error($this->con);
+                echo "Error creating table at table 3 : " . mysqli_error($this->con);
             }
 
         }else{
@@ -141,7 +149,7 @@ class CreateDb
                             );";
 
             if (!mysqli_query($this->con, $sql)){
-                echo "Error creating table : " . mysqli_error($this->con);
+                echo "Error creating table at table 4 : " . mysqli_error($this->con);
             }
 
         }else{
@@ -167,7 +175,56 @@ class CreateDb
                             );";
 
             if (!mysqli_query($this->con, $sql)){
-                echo "Error creating table : " . mysqli_error($this->con);
+                echo "Error creating table at table 5 : " . mysqli_error($this->con);
+            }
+
+        }else{
+            return false;
+        }
+
+        // TBALE6
+        if(mysqli_query($this->con, $sql)){
+
+            $this->con = mysqli_connect($servername, $username, $password, $dbname);
+
+            // sql to create new table
+            $sql = " CREATE TABLE IF NOT EXISTS $feedback
+                            (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                             user VARCHAR (255) NOT NULL,
+                             username VARCHAR (255) NOT NULL,
+                             email VARCHAR (255) NOT NULL,
+                             feedback TEXT,
+                             created_date DATETIME NOT NULL
+                            );";
+
+            if (!mysqli_query($this->con, $sql)){
+                echo "Error creating table at table 6 : " . mysqli_error($this->con);
+            }
+
+        }else{
+            return false;
+        }
+
+
+
+        // TBALE7
+        if(mysqli_query($this->con, $sql)){
+
+            $this->con = mysqli_connect($servername, $username, $password, $dbname);
+
+            // sql to create new table
+            $sql = " CREATE TABLE IF NOT EXISTS $send_order
+                            (send_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                             customer_name VARCHAR (255) NOT NULL,
+                             product_name VARCHAR (255) NOT NULL,
+                             price VARCHAR (255) NOT NULL,
+                             quantity VARCHAR (255) NOT NULL,
+                             img VARCHAR (255) NOT NULL,
+                             created_date DATETIME NOT NULL
+                            );";
+
+            if (!mysqli_query($this->con, $sql)){
+                echo "Error creating table at table 7 : " . mysqli_error($this->con);
             }
 
         }else{

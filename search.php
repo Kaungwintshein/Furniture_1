@@ -9,17 +9,8 @@
         $count = mysqli_num_rows($res);
         $sn=1;
         $products = mysqli_fetch_all($res,MYSQLI_ASSOC);
-    }else{
-        echo '<h3>No Product Found.</h3>';
-        $sql = "SELECT * FROM category INNER JOIN product ON category.id = product.category_id";
-        $res = mysqli_query($conn, $sql);
-
-        $count = mysqli_num_rows($res);
-        $sn=1;
-        $products = mysqli_fetch_all($res,MYSQLI_ASSOC);
-    }
-
-
+        
+        
 ?>
 
 <!DOCTYPE html>
@@ -32,9 +23,22 @@
     <link rel="stylesheet" href="/public/dist/css/grid.css">
     <link rel="stylesheet" href="/public/css/index.css">
     <link rel="stylesheet" href="/public/css/contact.css">
+    <style>
+        a{
+            text-decoration: none;
+            color: white;
+        }
+        a:hover{
+            color: white;
+        }
+    </style>
 </head>
 <body>
-    
+    <?php 
+        include dirname(__FILE__)."/php/includes/header.php" ;
+        if($count > 0){
+    ?>
+    <h1 class="text-left">Result For Search "<?php echo $search_string ?>"</h1>
     <!-- cart -->
     <div class="container cart">
         <div class="row" id="row">
@@ -48,8 +52,14 @@
 
         </div>
     </form>
+    
+    <?php
+        }else{
+            echo '<h3>No Product Found For Search "' . $search_string . '".</h3>';
+        }
+    ?>
 
-    <button class="btn btn-success"><a href="/product.php">Back</a></button>
+    <button class="btn btn-success"><a href="/product.php">Return</a></button>
 
 
     <script type='text/javascript'>
@@ -62,6 +72,17 @@
 
 </body>
 </html>
+<?php  
+}else{
+    echo '<h3>404.</h3>';
+    // $sql = "SELECT * FROM category INNER JOIN product ON category.id = product.category_id";
+    // $res = mysqli_query($conn, $sql);
+
+    // $count = mysqli_num_rows($res);
+    // $sn=1;
+    // $products = mysqli_fetch_all($res,MYSQLI_ASSOC);
+}
+?>
 
 
 <!-- 

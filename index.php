@@ -39,8 +39,8 @@
     
     <div class="img_showcase_container">
         <div class="container-fluid img_hover_text">
-          <h1>Elle Decoration</h1>
-          <p>Art, Handmade</p>
+          <h1>Stark</h1>
+          <p>Handmade</p>
         </div>
         <img class="img-fluid" src="/images/portfolio-img-02.jpg" alt="">
       
@@ -48,8 +48,8 @@
 
     <div class="img_showcase_container">
         <div class="container-fluid img_hover_text">
-          <h1>Elle Decoration</h1>
-          <p>Art, Handmade</p>
+          <h1>Appodeal</h1>
+          <p>Home</p>
         </div>
         <img class="img-fluid" src="/images/portfolio-img-03.jpg" alt="">
       
@@ -57,8 +57,8 @@
 
     <div class="img_showcase_container">
         <div class="container-fluid img_hover_text">
-          <h1>Elle Decoration</h1>
-          <p>Art, Handmade</p>
+          <h1>Bussiness Center</h1>
+          <p>Handmade, Home</p>
         </div>
         <img class="img-fluid" src="/images/portfolio-img-04.jpg" alt="">
       
@@ -70,7 +70,7 @@
   <div class="d-flex img_hover_content">
     <div class="img_showcase_container">
         <div class="container-fluid img_hover_text">
-          <h1>Elle Decoration</h1>
+          <h1>Smena Cafe</h1>
           <p>Art, Handmade</p>
         </div>
         <img class="img-fluid" src="/images/portfolio-img-05.jpg" alt="">
@@ -79,8 +79,8 @@
     
     <div class="img_showcase_container">
         <div class="container-fluid img_hover_text">
-          <h1>Elle Decoration</h1>
-          <p>Art, Handmade</p>
+          <h1>Sight</h1>
+          <p>Furniture</p>
         </div>
         <img class="img-fluid" src="/images/portfolio-img-06.jpg" alt="">
       
@@ -88,8 +88,8 @@
 
     <div class="img_showcase_container">
         <div class="container-fluid img_hover_text">
-          <h1>Elle Decoration</h1>
-          <p>Art, Handmade</p>
+          <h1>Karelinn</h1>
+          <p>Art, Home</p>
         </div>
         <img class="img-fluid" src="/images/portfolio-img-07.jpg" alt="">
       
@@ -97,8 +97,8 @@
 
     <div class="img_showcase_container">
         <div class="container-fluid img_hover_text">
-          <h1>Elle Decoration</h1>
-          <p>Art, Handmade</p>
+          <h1>Wooden Office</h1>
+          <p>Handmade</p>
         </div>
         <img class="img-fluid" src="/images/portfolio-img-08.jpg" alt="">
       

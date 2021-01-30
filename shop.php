@@ -7,7 +7,7 @@
 <html lang="en">
 
 <head>
-    <title>Document</title>
+    <title>REECO - Shop</title>
     <link rel="stylesheet" href="/public/css/style.css">
     <?php include dirname(__FILE__).'/php/includes/head.php'; ?>
 
@@ -28,10 +28,7 @@
     $count = mysqli_num_rows($res);
     $sn=1;
     $products = mysqli_fetch_all($res,MYSQLI_ASSOC);
-
-    mysqli_close($conn);
-
-
+    
 ?>
 
     <!-- cart -->

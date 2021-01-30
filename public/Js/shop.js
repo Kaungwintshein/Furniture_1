@@ -1,12 +1,15 @@
 const container_row = document.getElementById("row");
 container_row.innerHTML = products
-  .map(
-    (item) =>
-      ` <div class="col-lg-4 col-md-6 mt-2 mb-2" >
+  .map((item) => {
+    return ` <div class="col-lg-4 col-md-6 mt-2 mb-2" >
     <div class='cart-image-container'>
         <img src= './images/product/${item.img}' class='img-fluid' alt="">
+
+       
         <div class="cart-icon d-flex">
-            <div class="m-auto d-flex justify-content-around">
+         ${
+           item.stock > 0
+             ? `<div class="m-auto d-flex justify-content-around">
                 <span class='d-flex icon-img'>
                     <i class="fas fa-plus m-auto"></i>
                 </span>
@@ -16,19 +19,23 @@ container_row.innerHTML = products
                 <span class='d-flex icon-img'>
                     <i class="far fa-heart m-auto"></i>
                 </span>
-            </div>
+            </div> `
+             : `<div class="m-auto d-flex justify-content-around"> 
+              <span class='text-danger'> Out of Stock </span>
+             </div>`
+         }
         </div>
     </div>
+    
     <div class='text-center p-2' id=${item.id}>
         <h2>${item.item_name}</h2>
         
         <h2 class='mt-2'>$ ${item.price}</h2>
     </div>
-</div>`
-  )
+</div>`;
+  })
   .join("");
 
-//model
 
 const modal = document.getElementById("modal");
 

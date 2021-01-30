@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "/php/config/db.connect.php";
+include "php/config/db.connect.php";
 if(isset($_POST['register'])){
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -78,6 +78,7 @@ if(isset($_POST['register'])){
             }
             else{
                 echo "<script>window.alert('Successfully created an account')</script>";
+                echo "window.location ='/login.php' ";
             }
         }
       }
@@ -88,7 +89,7 @@ if(isset($_POST['register'])){
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Animated login form</title>
+    <title>REECO - Register</title>
  
   <!------------------------ style ------------------------------>
 <style>
@@ -201,6 +202,8 @@ if(isset($_POST['register'])){
 
 <input type="reset" name="reset" value="Reset">
 <input type="submit" name="register" value="Sign up">
-    </form>
+<h4><a style="color:grey; text-decoration: none;" href="/login.php">login here</a></h4>
+</form>
+
   </body>
 </html>

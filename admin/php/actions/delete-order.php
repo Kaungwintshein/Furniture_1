@@ -7,13 +7,16 @@
         $orders = mysqli_fetch_all($result, MYSQLI_ASSOC);
         foreach($orders as $row){
             $customer_name = $row['username'];
+            $buyer_name = $row['buyer_name'];
             $product_name = $row['item_name'];
             $price = $row['price'];
-            $order_quantity = $row['price'];
+            $order_quantity = $row['quantity'];
             $quantity = $row['quantity'];
             $img = $row['img'];
+            $phonenumber = $row['phonenumber'];
+            $address = $row['address'];
         };
-        $sql_2 = "INSERT INTO send_order (customer_name,product_name,price,quantity,img,created_date) VALUES ('$customer_name','$product_name','$price','$order_quantity','$img',now())";
+        $sql_2 = "INSERT INTO send_order (customer_name,buyer_name,product_name,price,quantity,img,phonenumber,address,created_date) VALUES ('$customer_name','$buyer_name','$product_name','$price','$order_quantity','$img','$phonenumber','$address',now())";
         $inserted = mysqli_query($conn, $sql_2);
 
         if($inserted){

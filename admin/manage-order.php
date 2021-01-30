@@ -24,11 +24,14 @@ mysqli_close($conn);
         <thead>
             <tr>
                 <th scope="col">S.N.</th>
+                <th scope="col">Account Name</th>
                 <th scope="col">Customer Name</th>
                 <th scope="col">Product Name</th>
                 <th scope="col">Price</th>
                 <th scope="col">Quantity</th>
                 <th scope="col">Image</th>
+                <th scope="col">Phone Number</th>
+                <th scope="col">Address</th>
                 <th scope="col">Total</th>
                 <th  scope="col">Actions</th>
             </tr>
@@ -41,6 +44,9 @@ mysqli_close($conn);
                     <th scope="row"> <?php echo $sn++ ?></th>
                     <td>              
                         <?php echo $row['username'] ?>
+                    </td>
+                    <td>              
+                        <?php echo $row['buyer_name'] ?>
                     </td>
                     <td>              
                         <?php if($row['item_name']){
@@ -73,11 +79,17 @@ mysqli_close($conn);
                             ?>
                     </td>
                     <td>              
+                        <?php echo $row['phonenumber'] ?>
+                    </td>
+                    <td>              
+                        <?php echo $row['address'] ?>
+                    </td>
+                    <td>              
                         <?php echo "$ " . $row['quantity'] * $row['price'] ?>
                     </td>
 
                     <td  colspan="2" >
-                    <a href='/admin/php/actions/delete-order.php?id=<?php echo $row['orders_id']; ?>&product_img=<?php echo $row['img']; ?>' class="btn-danger btn button ">Order Is Send</a>
+                    <a href='/admin/php/actions/delete-order.php?id=<?php echo $row['orders_id']; ?>&product_img=<?php echo $row['img']; ?>' class="btn-danger btn button">Order Is Send</a>
 
                     </td>
                     

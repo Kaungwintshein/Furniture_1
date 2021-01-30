@@ -1,7 +1,7 @@
 <?php
 session_start();
 include "php/config/create-db.php";
-$db = new CreateDb("reeco1","product","category","orders","auth","order_product","localhost","root","123456"); 
+$db = new CreateDb("reeco1","product","category","orders","auth","order_product","feedback","send_order","localhost","root","123456"); 
 
 include('php/config/db.connect.php');
 
@@ -42,7 +42,7 @@ if(isset($_POST['btnsignin'])){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Login</title>
+    <title>REECO - Login</title>
 
 <!-------------------------------------- style ----------------------->
 <style>
@@ -115,7 +115,8 @@ if(isset($_POST['btnsignin'])){
             <input type="text" name="username" placeholder="Username" required>
             <input type="password" name="password" placeholder="Password" required>
             <input type="submit" name="btnsignin" value="Sign in">
+            <h4><a style="color:grey; text-decoration: none;" href="/register.php">register here</a></h4>
     </form>
-
+    
 </body>
 </html>

@@ -38,11 +38,11 @@ const modalCard = (id) => {
   modal.innerHTML = `
 
   <div class="container">
-    <div class="row">
+    <div class="row p-5">
       <div class="col-lg-6">
           <img src='./images/product/${modalData.img}' class='img-fluid' alt="">
       </div>
-      <div class="col-lg-6 d-flex flex-column justify-content-center pb-2">
+      <div class="col-lg-6 d-flex flex-column justify-content-center pb-2 mt-5">
           <h3>${modalData.item_name}</h3>
           <input type="hidden" name='product_id' value="${modalData.id}" />
           

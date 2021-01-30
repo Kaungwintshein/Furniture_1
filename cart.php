@@ -1,7 +1,10 @@
 <?php
     include "./php/config/db.connect.php";
     include "./php/config/auth.php";
-
+    
+    // if(isset($_SESSION['order_success'])){
+    //     echo $_SESSION['order_success']; 
+    // }else{
 
     $id = $_SESSION['userid'];
     $sql = "select auth.id as customer_id, auth.username as customer_name,product.item_name as product_name,product.*, order_product.* FROM order_product INNER JOIN auth ON order_product.customer_id=auth.id INNER JOIN product ON order_product.product_id=product.id WHERE auth.id='$id'";
@@ -14,7 +17,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>REECO - Cart</title>
     <link rel="stylesheet" href="/public/css/cart.css">
     <!-- <script src="/public/Js/cart.js" type="text/javascript"></script> -->
 </head>
@@ -37,7 +40,8 @@
             <?php 
                 foreach($preorders as $preorder):
             ?>
-            <form action="/checkout.php?id=<?php echo $preorder['order_product_id'] ?>&customerid=<?php echo $preorder['customer_id']; ?>" method="post">
+            <!-- action="/checkout_1.php?id=<?php //echo $preorder['order_product_id'] ?>&customerid=<?php //echo $preorder['customer_id']; ?>" -->
+            <form action="/checkout_1.php?id=<?php echo $preorder['order_product_id'] ?>&customerid=<?php echo $preorder['customer_id']; ?>" method="post">
                 <div class="cart-row">
 
                     <div class="cart-item cart-column">
@@ -54,9 +58,10 @@
                         <input type="hidden" name="price" value="<?php echo $preorder['price']; ?>">
                         <input type="hidden" name="img" value="<?php echo $preorder['img']; ?>">
                         <button type='submit' name='checkout' class="btn" type="button">Order</button>
+                        <!-- <button type='submit' name='checkout' class="btn" type="button"> <a href="/checkout_1.php?id=<?php echo $preorder['order_product_id'] ?>&product_id=<?php echo $preorder['product_id']; ?>&customerid=<?php echo $preorder['customer_id']; ?>&order_quantity=<?php echo $preorder['order_quantity']; ?>&img=<?php echo $preorder['img']; ?>&price=<?php echo $preorder['price']; ?>">Order</a> </button> -->
                     </div>
                     <div class="cart-column">
-                        <button type='submit' name='delete' id="btn-danger" class="btn btn-danger" type="button"> <a href="/cartDel.php?id=<?php echo $preorder['order_product_id'] ?>">REMOVE</a></button>
+                        <button name='delete' id="btn-danger" class="btn btn-danger" type="button"> <a href="/cartDel.php?id=<?php echo $preorder['order_product_id'] ?>">REMOVE</a></button>
                     </div>
                 </div>
             </form>
@@ -110,3 +115,4 @@ function updateCartTotal() {
 </body>
 
 </html>
+<?php //} ?>

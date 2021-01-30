@@ -1,24 +1,41 @@
 <?php 
-    include("./php/config/auth.php");
-    include("./php/includes/header.php");
-    include("./php/config/db_connect.php");
+    include("php/config/auth.php"); 
+    include("php/config/db.connect.php");
+    
+    $customer_id = $_SESSION['userid'];
 
-    $result = mysqli_query($conn,"SELECT * FROM send_order");
+    //$result = mysqli_query($conn,"SELECT auth.id,product.item_name, product.*, auth.*, orders.*,order_product.* FROM order_product LEFT JOIN auth ON orders.customer_id=auth.id LEFT JOIN product ON orders.product_id=product.id WHERE auth.id='$customer_id'");
+
+    $result = mysqli_query($conn,"SELECT product.*,orders.*,auth.* FROM orders LEFT JOIN auth ON orders.customer_id=auth.id LEFT JOIN product ON orders.product_id=product.id WHERE auth.id='$customer_id'");
+
+
     $count = mysqli_num_rows($result);
     $sn = 1;
-    $orders = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    mysqli_free_result($result);
-    mysqli_close($conn);
+    // /mysqli_free_result($result);
+    //mysqli_close($conn);
+
 ?>
 
-<div class="container">
-    <h3 class='title m-4'>Send Information</h3>
-    <table class="table table-striped table-hover">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>REECO - My Order</title>
+    <link rel="stylesheet" href="/public/css/style.css">
+    <?php include "php/includes/head.php" ?>
+
+    <link rel="stylesheet" href="/public/css/index.css">
+</head>
+<body>
+    <?php include "php/includes/navbar.php" ?>
+
+    <div class="container">
+    <h3 class='title m-4'>My Orders</h3>
+    <table class="table  table-striped table-hover mt-5">
         <thead>
             <tr>
                 <th scope="col">S.N.</th>
+                <th scope="col">Account Name</th>
                 <th scope="col">Customer Name</th>
-                <th scope="col">Buyer Name</th>
                 <th scope="col">Product Name</th>
                 <th scope="col">Price</th>
                 <th scope="col">Quantity</th>
@@ -26,24 +43,26 @@
                 <th scope="col">Phone Number</th>
                 <th scope="col">Address</th>
                 <th scope="col">Total</th>
-                <th  scope="col">Date</th>
             </tr>
         </thead>
         <tbody>
         
-        <?php if($count > 0) : ?>
+        <?php if($count > 0) : 
+            $orders = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        ?>
+            
             <?php foreach($orders as $row): ?>
                 <tr>
                     <th scope="row"> <?php echo $sn++ ?></th>
                     <td>              
-                        <?php echo $row['customer_name'] ?>
+                        <?php echo $row['username'] ?>
                     </td>
                     <td>              
                         <?php echo $row['buyer_name'] ?>
                     </td>
                     <td>              
-                        <?php if($row['product_name']){
-                            echo $row['product_name'];
+                        <?php if($row['item_name']){
+                            echo $row['item_name'];
                         }else{
                             echo "error";
                         } 
@@ -80,15 +99,13 @@
                     <td>              
                         <?php echo "$ " . $row['quantity'] * $row['price'] ?>
                     </td>
-                    <td>              
-                        <?php echo $row['created_date'] ?>
-                    </td>
+                    
                 </tr>
             <?php endforeach; ?>
         <?php else: ?>
                 <tr>
                     <td colspan="8">
-                        <div class="text-danger">No Information Now.</div>
+                        <div class="text-danger">No Orders.</div>
                     </td>
                 </tr>
         <?php endif; ?>
@@ -98,4 +115,6 @@
     </table>
 </div>
 
-<?php include("./php/includes/footer.php") ?>
+    <?php include("./php/includes/footer.php") ?>
+</body>
+</html>

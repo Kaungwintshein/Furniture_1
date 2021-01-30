@@ -10,14 +10,13 @@
 //$sql = "SELECT * FROM product ";
 $sql = "SELECT * FROM category INNER JOIN product ON category.id = product.category_id";
 $res = mysqli_query($conn, $sql);
-
 $count = mysqli_num_rows($res);
 $sn=1;
 $products = mysqli_fetch_all($res,MYSQLI_ASSOC);
 
-mysqli_free_result($res);
+// /mysqli_free_result($res);
 
-mysqli_close($conn);
+//mysqli_close($conn);
 
 
 
@@ -61,7 +60,7 @@ mysqli_close($conn);
     ?>
 
     <a href='/admin/php/actions/add-product.php' class="btn-primary btn button m-4">Add Product</a>
-    <table class="table  table-striped table-hover">
+    <table class="table table-striped table-hover">
         <thead>
             <tr>
                 <th scope="col">S.N.</th>
