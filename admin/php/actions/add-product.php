@@ -1,15 +1,6 @@
 <?php 
     include("../includes/header.php");
     include("../config/db_connect.php");
-
-    $sql = "SELECT * FROM product";
-    $res = mysqli_query($conn,$sql);
-    $products = mysqli_fetch_all($res, MYSQLI_ASSOC);
-    foreach($products as $product){
-        $name_from_db = $product['item_name'];
-        $img_from_db = $product['img'];
-    }
-
 ?>
 <div class="container mt-4">
 <?php 
@@ -103,9 +94,15 @@ if(isset($_POST['submit'])){
     $stock = $_POST['stock'];
     $detail = $_POST['description'];
     $category_id = $_POST['category'];
+    $image_name = $_FILES['image']['name'];
+
+
+    
+
+
 
     if(isset($_FILES['image']['name'])){
-        $image_name = $_FILES['image']['name'];
+        
 
         if($image_name != ''){
             //$ext = end(explode('.', $image_name));
@@ -128,6 +125,17 @@ if(isset($_POST['submit'])){
         
     }
     
+    // from db
+    $sql = "SELECT * FROM product WHERE item_name= '$item_name' && img='$image_name'";
+    $res = mysqli_query($conn,$sql);
+    $products = mysqli_fetch_all($res, MYSQLI_ASSOC);
+    foreach($products as $product){
+        $name_from_db = $product['item_name'];
+        $img_from_db = $product['img'];
+    }
+
+    
+
     if($img_from_db == $image_name && $name_from_db == $item_name){
         $message = "Product Already Exist";
         echo "<script type='text/javascript'>alert('$message');</script>";
@@ -141,14 +149,23 @@ if(isset($_POST['submit'])){
 
         if($res){
             $_SESSION['add'] = "<div class='text-success'>Product Added Successfully.</div>";
-            header('location: /admin/manage-product.php');
+            //header('location: /admin/manage-product.php');
+            
+            echo "<script type='text/javascript'>
+            window.location = '/admin/manage-product.php';
+            </script>";
 
         }else{
             $error = mysqli_error($conn);
             $_SESSION['add'] = "<div class='text-danger'>Failed to Add Product.$error</div>";
-            header('location: /admin/manage-product.php');
+            
+            //header('location: /admin/manage-product.php');
+            echo "<script type='text/javascript'>
+            window.location = '/admin/manage-product.php';
+            </script>";
         }
     }
+    
     
 }
 

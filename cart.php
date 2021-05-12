@@ -8,6 +8,9 @@
 
     $id = $_SESSION['userid'];
     $sql = "select auth.id as customer_id, auth.username as customer_name,product.item_name as product_name,product.*, order_product.* FROM order_product INNER JOIN auth ON order_product.customer_id=auth.id INNER JOIN product ON order_product.product_id=product.id WHERE auth.id='$id'";
+
+// "select products.*, categories.* from carts inner join products on carts.product_id = products.id inner join categories on carts.category_id = categories.id where carts.user_id = '1'"
+
     $res = mysqli_query($conn, $sql);
     $preorders = mysqli_fetch_all($res,MYSQLI_ASSOC);
 ?>
